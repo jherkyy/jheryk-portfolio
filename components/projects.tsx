@@ -116,7 +116,12 @@ const platforms = [
 
 export function Projects() {
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null)
-  const { theme } = useTheme()
+  const { theme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const openPlatformModal = (platformId: string) => {
     setSelectedPlatform(platformId)
@@ -133,6 +138,19 @@ export function Projects() {
       document.body.style.overflow = "unset"
     }
   }, [])
+
+  const getLogoSrc = (platform: any) => {
+    if (!mounted) return platform.lightLogo // Default to light logo during SSR
+
+    const currentTheme = resolvedTheme || theme || "light"
+
+    // Explicit conditional logic for logo switching
+    if (currentTheme === "dark") {
+      return platform.darkLogo
+    } else {
+      return platform.lightLogo
+    }
+  }
 
   return (
     <section id="projects" className="py-16 bg-background">
@@ -156,11 +174,13 @@ export function Projects() {
                 <CardHeader className="text-center">
                   <div className="w-full h-20 mx-auto mb-4 flex items-center justify-center">
                     <Image
-                      src={theme === "dark" ? platform.darkLogo : platform.lightLogo}
+                      key={`${platform.id}-${mounted ? resolvedTheme || theme : "light"}`}
+                      src={getLogoSrc(platform) || "/placeholder.svg"}
                       alt={`${platform.name} logo`}
                       width={200}
                       height={80}
                       className="max-w-full max-h-full object-contain"
+                      priority
                     />
                   </div>
                 </CardHeader>

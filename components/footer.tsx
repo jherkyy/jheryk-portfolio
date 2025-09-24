@@ -26,10 +26,10 @@ export function Footer() {
               AI Automation Specialist helping businesses optimize workflows and enhance efficiency through intelligent
               automation solutions.
             </p>
-            <div className="flex gap-4 text-sm text-muted-foreground">
-              <span>English (Conversational)</span>
-              <span>•</span>
-              <span>Filipino (Native)</span>
+            <div className="flex gap-4 text-sm">
+              <span className="text-primary font-semibold">English (Conversational)</span>
+              <span className="text-primary">•</span>
+              <span className="text-primary font-semibold">Filipino (Native)</span>
             </div>
           </div>
           <div>
