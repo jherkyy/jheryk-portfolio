@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Mail, Phone, Linkedin } from "lucide-react"
+import { ArrowRight, Mail, Phone, MapPin } from "lucide-react"
 import { ScrollReveal } from "./scroll-reveal"
 import Image from "next/image"
 
@@ -70,15 +70,10 @@ export function Hero() {
                   <Phone className="h-4 w-4" />
                   +63 9954966939
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/jheryk-alboleras-29569a309/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-foreground transition-colors hover-lift"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn Profile
-                </a>
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  Rizal, Philippines
+                </div>
               </div>
             </ScrollReveal>
           </div>
