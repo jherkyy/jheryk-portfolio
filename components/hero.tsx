@@ -28,8 +28,12 @@ export function Hero() {
                   className="text-lg px-8 bg-primary text-primary-foreground hover:bg-primary/90 hover-lift click-effect"
                   asChild
                 >
-                  <a href="#contact">
-                    Schedule Consultation <ArrowRight className="ml-2 h-5 w-5" />
+                  <a
+                    href="https://drive.google.com/file/d/1QdNqcJ1LBXKd4UUnAwTNWdulhCviBFhw/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View my Resume <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                 </Button>
                 <Button
