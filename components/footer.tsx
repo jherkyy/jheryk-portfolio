@@ -13,6 +13,11 @@ const skills = [
   "REST API",
   "Webhooks",
   "API Integration",
+  "Shopify",
+  "Discord",
+  "Microsoft Teams",
+  "Zoom",
+  "WhatsApp",
 ]
 
 export function Footer() {

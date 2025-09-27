@@ -36,8 +36,11 @@ export function Testimonials() {
         <ScrollReveal>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-balance mb-4">Client Testimonials</h2>
-            <p className="text-xl text-muted-foreground text-balance max-w-2xl mx-auto leading-relaxed">
-              What clients say about working with me
+            <p className="text-xl text-muted-foreground text-balance max-w-2xl mx-auto leading-relaxed mb-2">
+              Sample testimonials showcasing the type of results I deliver for clients
+            </p>
+            <p className="text-sm text-muted-foreground/80 italic">
+              *Representative examples of client feedback and project outcomes
             </p>
           </div>
         </ScrollReveal>
