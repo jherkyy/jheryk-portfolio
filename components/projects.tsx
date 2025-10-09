@@ -1,91 +1,212 @@
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ExternalLink, X } from "lucide-react"
 import { ScrollReveal } from "./scroll-reveal"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
+import { ImageCarousel } from "./image-carousel"
 
-const platformProjects = {
+const projectsData = {
   zapier: [
     {
-      title: "Client Lifecycle Automation",
-      tagline: '💡 "Streamlined onboarding for a smoother client journey."',
-      description:
-        "Automated client onboarding and lead nurturing system integrating Asana, Google Drive, and email workflows to streamline sales processes.",
-      tools: ["Zapier", "Asana", "Google Drive", "Gmail"],
-      link: "https://docs.google.com/presentation/d/15Dc-ETPxU-iGpeTNdYuo0WfO2_ufPoDRClXxOBkmAdU/edit?usp=sharing",
-    },
-    {
+      emoji: "🧩",
       title: "Automated Lead Qualification & Outreach Workflow",
-      tagline: '💡 "Smarter lead qualification, faster outreach."',
-      description:
-        "Built an automation that captures and enriches leads in real time, prioritizes them, notifies sales teams, and generates personalized AI-driven outreach emails to accelerate conversions.",
-      tools: ["Zapier", "Snov API", "Google Sheets", "Google Gemini", "Slack", "Gmail"],
-      link: "https://docs.google.com/presentation/d/1yt3sGQPwiVjChEofkzl4i3j-y2-NcV-2atXtWicTxDk/edit?usp=sharing",
+      tagline: '"Smarter lead qualification, faster outreach."',
+      overview:
+        "A Zapier automation that captures, enriches, and prioritizes leads in real time — automatically generating AI-personalized outreach emails.",
+      problem:
+        "Manual lead qualification and email drafting delayed response times and reduced engagement opportunities.",
+      solution:
+        "The system collects incoming leads, enriches their data through APIs, and scores them in Google Sheets. High-priority leads trigger notifications to the sales team, while Google Gemini drafts personalized follow-up emails to boost engagement speed.",
+      result:
+        "Showcases how automation can cut lead response time by over 70%, creating faster, more personalized sales communication.",
+      tools: ["Zapier", "Google Sheets", "Google Gemini", "Gmail"],
+      images: [
+        "/Project-Screenshots/Zapier/Automated-Lead-Qualification-&-Outreach-Workflow/1.png",
+        "/Project-Screenshots/Zapier/Automated-Lead-Qualification-&-Outreach-Workflow/2.png",
+        "/Project-Screenshots/Zapier/Automated-Lead-Qualification-&-Outreach-Workflow/3.png"
+      ],
     },
     {
-      title: "Social Media Content Repurposing",
-      tagline: '💡 "One idea, endless social media posts."',
-      description:
-        "Developed a content repurposing automation that transforms a single idea into ready-to-publish posts tailored for multiple social platforms.",
-      tools: ["Zapier", "Google Drive", "OpenAI Whisper API", "Facebook", "Reddit"],
-      link: "https://docs.google.com/presentation/d/1L4Nhz_sULSk0m8vPFkSwU9XRqDp99rP-YZXQe4Er-R0/edit?usp=sharing",
+      emoji: "🧩",
+      title: "Client Lifecycle Automation",
+      tagline: '"Streamlined onboarding for a smoother client journey."',
+      overview:
+        "An end-to-end client workflow automation that handles onboarding, nurturing, and follow-ups — ensuring a seamless client experience from start to finish.",
+      problem:
+        "Businesses often faced inconsistent communication and manual tracking during client onboarding and service delivery.",
+      solution:
+        "Using Asana as the central hub, the workflow automates project folder creation in Google Drive, triggers onboarding tasks, and sends automated follow-up and milestone emails via Gmail — all based on Asana status updates.",
+      result:
+        "This workflow illustrates how automation improves client satisfaction, reduces admin time, and ensures timely communication throughout the customer journey.",
+      tools: ["Zapier", "Asana", "Google Drive", "Gmail"],
+      images: [
+        "/Project-Screenshots/Zapier/Client-Lifecycle-Automation/1.png",
+        "/Project-Screenshots/Zapier/Client-Lifecycle-Automation/2.png",
+        "/Project-Screenshots/Zapier/Client-Lifecycle-Automation/3.png"
+      ],
     },
     {
+      emoji: "🧩",
+      title: "Social Media Content Repurposing Automation",
+      tagline: '"One idea, endless social media posts."',
+      overview:
+        "A content repurposing system that converts a single audio or video file into multiple ready-to-publish posts.",
+      problem: "Content creators spent hours transcribing and reformatting media manually for different platforms.",
+      solution:
+        "When a new media file is added to Google Drive, the automation uses OpenAI Whisper API to transcribe it, generates two unique blog-style posts with titles and AI-generated images, and prepares them for platform distribution.",
+      result:
+        "Demonstrates how AI can streamline content workflows, reducing transcription and editing time by up to 80%.",
+      tools: ["Zapier", "Google Drive", "OpenAI Whisper API", "Gmail"],
+      images: [
+        "/Project-Screenshots/Zapier/Social-Media-Content-Repurposing-Automation/1.png",
+        "/Project-Screenshots/Zapier/Social-Media-Content-Repurposing-Automation/2.png",
+        "/Project-Screenshots/Zapier/Social-Media-Content-Repurposing-Automation/3.png",
+        "/Project-Screenshots/Zapier/Social-Media-Content-Repurposing-Automation/4.png"
+      ],
+    },
+    {
+      emoji: "🧩",
       title: "AI-Powered Multi-Channel Content Engine",
-      tagline: '💡 "Consistent content everywhere, with zero extra effort."',
-      description:
-        "Created a multi-platform publishing engine that transforms one idea into LinkedIn posts, Twitter threads, and Instagram captions. Integrated Buffer as a workaround for Twitter API limitations, ensuring smooth and scalable posting.",
+      tagline: '"Consistent content everywhere — with zero extra effort."',
+      overview:
+        "An advanced social content engine that converts one content idea into tailored posts for LinkedIn, Twitter (X), and Instagram.",
+      problem:
+        "Maintaining consistent, platform-specific content across multiple channels is time-consuming and error-prone.",
+      solution:
+        "The automation sends a topic from Google Sheets to Google Gemini, which generates posts optimized for each platform. It integrates Buffer for scheduling, overcoming API limitations for seamless publishing.",
+      result:
+        "Demonstrates how AI-driven automation can maintain consistency and reduce social content production time by up to 80%.",
       tools: ["Zapier", "Google Sheets", "Google Gemini", "Buffer", "LinkedIn", "Twitter (X)", "Instagram"],
-      link: "https://docs.google.com/presentation/d/10LQzQiPX4yMzWVZqcoZ_do2ZrmrE68b5ebxLaKLoN-s/edit?usp=sharing",
+      images: [
+        "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/1.png",
+        "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/2.png",
+        "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/3.png",
+        "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/4.png",
+        "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/5.png",
+        "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/6.png",
+        "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/7.png"
+      ],
     },
   ],
   make: [
     {
+      emoji: "⚡",
       title: "Automated Xero-Asana Financial Report Integration",
-      tagline: '💡 "Seamless financial reporting, zero manual effort."',
-      description:
-        "Automated the creation and delivery of General Ledger-style financial reports by connecting Xero and Asana, ensuring accurate, real-time data without manual effort.",
+      tagline: '"Seamless financial reporting, zero manual effort."',
+      overview:
+        "A Make.com automation that generates and attaches detailed financial reports automatically when Asana tasks are completed.",
+      problem: "Teams relied on manual accounting report creation, leading to errors and delays in updates.",
+      solution:
+        "Triggered upon Asana task completion, the workflow retrieves data from Xero, formats it into a general ledger-style CSV, and attaches it directly to the relevant task for instant access.",
+      result: "Showcases how automation ensures accurate, up-to-date financial reporting with zero manual effort.",
       tools: ["Make.com", "Xero", "Asana"],
-      link: "https://docs.google.com/presentation/d/1G7_VGezuRyMiWdxMdbHjDXqbh4_t7NTGJi0yR0d-pAE/edit?usp=sharing",
+      images: [
+        "/Project-Screenshots/Make/Automated-Xero-Asana-Financial-Report-Integration/1.png",
+        "/Project-Screenshots/Make/Automated-Xero-Asana-Financial-Report-Integration/2.png"
+      ],
     },
     {
+      emoji: "⚡",
       title: "Intelligent Gmail Attachment Processing & Filing Automation",
-      tagline: '💡 "AI-powered document organization made effortless."',
-      description:
-        "Streamlined file management by using AI to auto-name, organize, and log Gmail attachments into Google Drive and Sheets, while sending users clear email summaries.",
+      tagline: '"AI-powered document organization made effortless."',
+      overview:
+        "An intelligent Make.com system that renames, stores, and tracks Gmail attachments automatically using AI.",
+      problem: "Handling and organizing email attachments manually consumed time and caused disorganization.",
+      solution:
+        "The automation uses Google Gemini to analyze attachment content, auto-generate descriptive filenames, move them to Google Drive, log details in Google Sheets, and send users an organized summary email.",
+      result: "Demonstrates efficient, AI-enhanced email management and removes repetitive file-handling tasks.",
       tools: ["Make.com", "Gmail", "Google Drive", "Google Sheets", "Google Gemini"],
-      link: "https://docs.google.com/presentation/d/1eQ9KkMDODqKRYKZCikhcN_Fqf6R-XUPoboX8EuJasiU/edit?usp=sharing",
+      images: [
+        "/Project-Screenshots/Make/Intelligent-Gmail-Attachment-Processing-&-Filing-Automation/1.png",
+        "/Project-Screenshots/Make/Intelligent-Gmail-Attachment-Processing-&-Filing-Automation/2.png",
+        "/Project-Screenshots/Make/Intelligent-Gmail-Attachment-Processing-&-Filing-Automation/3.png",
+        "/Project-Screenshots/Make/Intelligent-Gmail-Attachment-Processing-&-Filing-Automation/4.png"
+      ],
     },
     {
+      emoji: "⚡",
       title: "E-Commerce Order Support Automation",
-      tagline: '💡 "Smart automation for end-to-end order management."',
-      description:
-        "Built an end-to-end e-commerce automation that manages orders, customer updates, internal notifications, and support tickets across Shopify, Airtable, Zendesk, Gmail, and Slack.",
+      tagline: '"Smart automation for end-to-end order management."',
+      overview: "An e-commerce order management workflow connecting Shopify, Airtable, Zendesk, Gmail, and Slack.",
+      problem: "Manual tracking and communication across multiple tools caused delays and missed customer issues.",
+      solution:
+        "The workflow logs new Shopify orders in Airtable, sends order confirmations or shipping updates via Gmail, alerts internal teams in Slack, and creates Zendesk tickets for failed payments.\n\nNote: Since Shopify's order trigger requires a paid plan, a simulated webhook + Postman setup was used to model real-world functionality.",
+      result:
+        "Demonstrates how multi-tool automation can centralize order management, reducing delays and improving customer satisfaction.",
       tools: ["Make.com", "Shopify", "Airtable", "Slack", "Zendesk", "Gmail"],
-      link: "https://docs.google.com/presentation/d/1I0UjVENL15EmCW1CfBtfqrHid68Bj3PQoSIVjT8zB_U/edit?usp=sharing",
+      images: [
+        "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/1.png",
+        "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/2.png",
+        "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/3.png",
+        "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/4.png",
+        "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/5.png",
+        "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/6.png",
+        "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/7.png"
+      ],
     },
   ],
   n8n: [
     {
+      emoji: "💬",
       title: "AI Agent for Facebook Customer Inquiries",
-      tagline: '💡 "Dynamic AI support for instant customer replies."',
-      description:
-        "Deployed an AI Agent that instantly replies to Facebook Page inquiries with a knowledge base dynamically powered by Google Docs for real-time, consistent support.",
+      tagline: '"Dynamic AI support for instant customer replies."',
+      overview:
+        "An AI Agent that replies automatically to Facebook Page messages using a real-time knowledge base powered by Google Docs.",
+      problem:
+        "Businesses faced long response times and inconsistent information when handling customer messages manually.",
+      solution:
+        "The workflow connects n8n with the Facebook API and Google Docs, enabling the AI to instantly generate accurate, context-based replies that update dynamically as the Docs content changes.",
+      result:
+        "Demonstrates how AI chat automation can maintain consistent communication while reducing response time to near-instant.",
       tools: ["n8n", "Facebook API", "Google Docs", "AI Integration"],
-      link: "https://docs.google.com/presentation/d/1x0hWGmhS7OYE4VHxkn6G5ajxrVP0IUXhBgzKZZjKidI/edit?usp=sharing",
+      images: [
+        "/Project-Screenshots/n8n/AI-Agent-for-Facebook-Customer-Inquiries/1.png"
+      ],
     },
     {
-      title: "AI-Powered Sales Prospecting and Outreach Engine",
-      tagline: '💡 "Personalized sales outreach at scale."',
-      description:
-        "Designed an intelligent outreach engine that enriches leads, generates personalized cold emails, manages follow-ups, and syncs with HubSpot for scalable, automated sales engagement.",
-      tools: ["n8n", "Google Sheets", "Apify", "LinkedIn", "Google Gemini", "HubSpot", "Slack", "Gmail"],
-      link: "https://docs.google.com/presentation/d/1XN9B5YpgsnWY4IrcZMioU66vHvHnAGz2n-oLr76-rqc/edit?usp=sharing",
+      emoji: "💼",
+      title: "AI-Powered Sales Prospecting & Outreach Engine",
+      tagline: '"Personalized sales outreach at scale."',
+      overview:
+        "An intelligent n8n workflow that automates prospect research, outreach, and CRM integration for sales teams.",
+      problem: "Sales representatives wasted hours on manual lead enrichment, personalization, and follow-ups.",
+      solution:
+        "The system ingests leads from Google Sheets, enriches them using Apify (LinkedIn data), drafts personalized outreach emails through Google Gemini, tracks responses in HubSpot, and uses Slack alerts for failures or updates.",
+      result:
+        "Simulates a full-scale AI-driven outreach system that can save teams 10+ hours weekly while improving consistency and personalization.",
+      tools: ["n8n", "Google Sheets", "Apify", "LinkedIn", "Google Gemini", "HubSpot", "Slack"],
+      images: [
+        "/Project-Screenshots/n8n/AI-Powered-Sales-Prospecting-and-Outreach-Engine-1/1.png",
+        "/Project-Screenshots/n8n/AI-Powered-Sales-Prospecting-and-Outreach-Engine-1/2.png",
+        "/Project-Screenshots/n8n/AI-Powered-Sales-Prospecting-and-Outreach-Engine-1/3.png",
+        "/Project-Screenshots/n8n/AI-Powered-Sales-Prospecting-and-Outreach-Engine-1/4.png",
+        "/Project-Screenshots/n8n/AI-Powered-Sales-Prospecting-and-Outreach-Engine-1/5.png",
+        "/Project-Screenshots/n8n/AI-Powered-Sales-Prospecting-and-Outreach-Engine-1/6.png",
+        "/Project-Screenshots/n8n/AI-Powered-Sales-Prospecting-and-Outreach-Engine-1/7.png",
+        "/Project-Screenshots/n8n/AI-Powered-Sales-Prospecting-and-Outreach-Engine-1/8.png",
+        "/Project-Screenshots/n8n/AI-Powered-Sales-Prospecting-and-Outreach-Engine-1/9.png",
+        "/Project-Screenshots/n8n/AI-Powered-Sales-Prospecting-and-Outreach-Engine-1/10.png",
+      ],
+    },
+    {
+      emoji: "🧠",
+      title: "Multi-Platform Content Generator & Scheduler",
+      tagline: '"AI-driven content creation from topic to post."',
+      overview:
+        "A fully automated n8n workflow that creates, reviews, and publishes AI-generated social media posts across platforms.",
+      problem: "Marketing teams struggled to manage content creation, visual design, and posting schedules manually.",
+      solution:
+        "Triggered by an Airtable webhook, the automation uses Google Gemini to generate platform-specific copy and Kie.ai API to produce matching visuals. It manages review via email approval, schedules posts, updates Airtable with status, and sends summary reports after publishing.",
+      result:
+        "Demonstrates a scalable, AI-assisted content system that can reduce creative workload by up to 75% and maintain consistent posting across channels.",
+      tools: ["n8n", "Airtable", "Google Gemini", "Kie.ai API", "Facebook", "Twitter (X)", "Reddit", "Gmail"],
+      images: [
+        "/Project-Screenshots/n8n/Multi-Platform-Content-Generator-and-Scheduler/1.png",
+        "/Project-Screenshots/n8n/Multi-Platform-Content-Generator-and-Scheduler/2.png"
+      ],
     },
   ],
 }
@@ -93,64 +214,29 @@ const platformProjects = {
 const platforms = [
   {
     id: "zapier",
-    lightLogo: "/logos/zapier-light.svg",
-    darkLogo: "/logos/zapier-dark.svg",
+    icon: "/logos/zapier-icon.jpeg",
     name: "Zapier",
-    description: "Workflow automation platform",
   },
   {
     id: "make",
-    lightLogo: "/logos/make-light.svg",
-    darkLogo: "/logos/make-dark.svg",
-    name: "Make (Integromat)",
-    description: "Visual automation platform",
+    icon: "/logos/make-icon.jpeg",
+    name: "Make",
   },
   {
     id: "n8n",
-    lightLogo: "/logos/n8n-light.svg",
-    darkLogo: "/logos/n8n-dark.svg",
+    icon: "/logos/n8n-icon.png",
     name: "n8n",
-    description: "Open-source workflow automation",
   },
 ]
 
 export function Projects() {
-  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null)
-  const { theme, resolvedTheme } = useTheme()
+  const [selectedPlatform, setSelectedPlatform] = useState<string>("zapier")
+  const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  const openPlatformModal = (platformId: string) => {
-    setSelectedPlatform(platformId)
-    document.body.style.overflow = "hidden"
-  }
-
-  const closePlatformModal = () => {
-    setSelectedPlatform(null)
-    document.body.style.overflow = "unset"
-  }
-
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = "unset"
-    }
-  }, [])
-
-  const getLogoSrc = (platform: any) => {
-    if (!mounted) return platform.lightLogo // Default to light logo during SSR
-
-    const currentTheme = resolvedTheme || theme || "light"
-
-    // Explicit conditional logic for logo switching
-    if (currentTheme === "dark") {
-      return platform.darkLogo
-    } else {
-      return platform.lightLogo
-    }
-  }
 
   return (
     <section id="projects" className="py-16 bg-background">
@@ -164,86 +250,99 @@ export function Projects() {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {platforms.map((platform, index) => (
-            <ScrollReveal key={platform.id} delay={index * 200}>
-              <Card
-                className="modern-card hover:shadow-lg transition-all duration-300 cursor-pointer hover-lift click-effect"
-                onClick={() => openPlatformModal(platform.id)}
-              >
-                <CardHeader className="text-center">
-                  <div className="w-full h-20 mx-auto mb-4 flex items-center justify-center">
-                    <Image
-                      key={`${platform.id}-${mounted ? resolvedTheme || theme : "light"}`}
-                      src={getLogoSrc(platform) || "/placeholder.svg"}
-                      alt={`${platform.name} logo`}
-                      width={200}
-                      height={80}
-                      className="max-w-full max-h-full object-contain"
-                      priority
-                    />
+        <div className="flex justify-center gap-4 mb-12 flex-wrap">
+          {platforms.map((platform) => (
+            <button
+              key={platform.id}
+              onClick={() => setSelectedPlatform(platform.id)}
+              className={`px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 ${
+                selectedPlatform === platform.id
+                  ? "bg-primary text-primary-foreground shadow-lg"
+                  : "bg-card hover:bg-accent"
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <Image
+                  src={platform.icon || "/placeholder.svg"}
+                  alt={`${platform.name} logo`}
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain rounded"
+                />
+                <span
+                  className={`font-semibold text-lg ${
+                    selectedPlatform === platform.id
+                      ? "text-primary-foreground"
+                      : mounted && resolvedTheme === "dark"
+                        ? "text-foreground"
+                        : "text-foreground"
+                  }`}
+                >
+                  {platform.name}
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <div className="space-y-12">
+          {projectsData[selectedPlatform as keyof typeof projectsData].map((project, index) => (
+            <ScrollReveal key={index} delay={index * 100}>
+              <Card className="modern-card p-8">
+                <div className="space-y-6">
+                  {/* Title with emoji */}
+                  <div>
+                    <h3 className="text-2xl font-bold text-balance mb-2">
+                      {project.emoji} {project.title}
+                    </h3>
+                    <p className="text-primary italic text-lg">💡 {project.tagline}</p>
                   </div>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <div className="text-sm text-muted-foreground">
-                    {platformProjects[platform.id as keyof typeof platformProjects].length} projects
+
+                  {/* Overview */}
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">Overview</h4>
+                    <p className="text-muted-foreground leading-relaxed">{project.overview}</p>
                   </div>
-                </CardContent>
+
+                  {/* Problem */}
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">Problem</h4>
+                    <p className="text-muted-foreground leading-relaxed">{project.problem}</p>
+                  </div>
+
+                  {/* Solution */}
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">Solution</h4>
+                    <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{project.solution}</p>
+                  </div>
+
+                  {/* Result & Impact */}
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">Result & Impact</h4>
+                    <p className="text-muted-foreground leading-relaxed">{project.result}</p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-lg mb-4">Project Screenshots</h4>
+                    <ImageCarousel images={project.images} alt={project.title} />
+                  </div>
+
+                  {/* Tools Used */}
+                  <div>
+                    <h4 className="font-semibold text-lg mb-3">Tools Used</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tools.map((tool) => (
+                        <Badge key={tool} variant="secondary" className="text-sm px-3 py-1">
+                          {tool}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </Card>
             </ScrollReveal>
           ))}
         </div>
-
-        {selectedPlatform && (
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-            <div className="bg-background rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto modern-card">
-              <div className="sticky top-0 bg-background border-b p-6 flex items-center justify-between">
-                <h3 className="text-2xl font-bold">
-                  {selectedPlatform.charAt(0).toUpperCase() + selectedPlatform.slice(1)} Projects
-                </h3>
-                <Button variant="ghost" size="sm" onClick={closePlatformModal}>
-                  <X className="h-4 w-4" />
-                </Button>
-              </div>
-              <div className="p-6">
-                {platformProjects[selectedPlatform as keyof typeof platformProjects].length > 0 ? (
-                  <div className="grid gap-6">
-                    {platformProjects[selectedPlatform as keyof typeof platformProjects].map((project, index) => (
-                      <Card key={index} className="modern-card hover-lift">
-                        <CardHeader>
-                          <CardTitle className="text-xl">{project.title}</CardTitle>
-                          <div className="text-sm text-primary italic font-medium mb-2">{project.tagline}</div>
-                          <CardDescription className="leading-relaxed">{project.description}</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          <div>
-                            <h4 className="font-semibold mb-2 text-sm">Tools Used</h4>
-                            <div className="flex flex-wrap gap-1">
-                              {project.tools.map((tool) => (
-                                <Badge key={tool} variant="outline" className="text-xs">
-                                  {tool}
-                                </Badge>
-                              ))}
-                            </div>
-                          </div>
-                          <Button asChild className="w-full">
-                            <a href={project.link} target="_blank" rel="noopener noreferrer">
-                              View Project Details <ExternalLink className="ml-2 h-4 w-4" />
-                            </a>
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="text-center py-12">
-                    <p className="text-muted-foreground">Projects coming soon for this platform!</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   )
