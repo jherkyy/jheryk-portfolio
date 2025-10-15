@@ -208,6 +208,25 @@ const projectsData = {
         "/Project-Screenshots/n8n/Multi-Platform-Content-Generator-and-Scheduler/2.png"
       ],
     },
+        {
+      emoji: "🌤️",
+      title: "Automated Daily Weather Forecast for Facebook",
+      tagline: '"Automated daily weather updates with an inspiring touch."',
+      overview:
+        "A fully automated n8n workflow that generates and posts a daily weather forecast with an inspirational quote on Facebook at 8:00 AM.",
+      problem: "Manually designing and posting daily weather updates and quotes takes time and limits consistency for social media managers.",
+      solution:
+        "Triggered by a daily schedule, the automation uses an AI Agent to generate a unique quote (checked against an n8n Data Table for duplicates), retrieves real-time weather via OpenWeatherMap, sources a matching image using Google Custom Search, and selects icons from Google Drive. The post image is then dynamically generated through Templated.io and published automatically to Facebook via the Graph API.",
+      result:
+        "Demonstrates how AI and automation can deliver engaging, data-driven daily content while reducing manual workload and maintaining consistent social media activity.",
+      tools: ["n8n", "AI Agent", "n8n Data Table", "OpenWeatherMap", "Google Custom Search", "Google Drive", "Templated.io", "Facebook Graph", "API Integration"],
+      images: [
+        "/Project-Screenshots/n8n/Automated-Daily-Weather-Forecast-for-Facebook/1.png",
+        "/Project-Screenshots/n8n/Automated-Daily-Weather-Forecast-for-Facebook/2.png",
+        "/Project-Screenshots/n8n/Automated-Daily-Weather-Forecast-for-Facebook/3.png",
+        "/Project-Screenshots/n8n/Automated-Daily-Weather-Forecast-for-Facebook/4.png"
+      ],
+    },
   ],
 }
 
