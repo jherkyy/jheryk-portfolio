@@ -1,10 +1,12 @@
 import { Mail, Phone, MapPin, Linkedin, ExternalLink } from "lucide-react"
 import { ScrollReveal } from "./scroll-reveal"
+import { BackgroundBeams } from "@/components/ui/background-beams"
 
 export function Contact() {
   return (
-    <section id="contact" className="py-16 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-16 bg-background relative overflow-hidden">
+      <BackgroundBeams />
+      <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-balance mb-4">Get In Touch</h2>
@@ -19,7 +21,8 @@ export function Contact() {
               <div>
                 <h3 className="text-2xl font-semibold mb-4">About Me</h3>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  I create intelligent automation solutions that streamline processes, reduce errors, and boost productivity through process automation, API integrations, and CRM optimization.
+                  I create intelligent automation solutions that streamline processes, reduce errors, and boost
+                  productivity through process automation, API integrations, and CRM optimization.
                 </p>
               </div>
               <div className="space-y-4">
@@ -64,7 +67,8 @@ export function Contact() {
               <div>
                 <h3 className="text-2xl font-semibold mb-4">Professional Profiles</h3>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Connect with me on various professional platforms to explore my work, review my experience, and gain insight into how I help businesses streamline processes and achieve greater efficiency.
+                  Connect with me on various professional platforms to explore my work, review my experience, and gain
+                  insight into how I help businesses streamline processes and achieve greater efficiency.
                 </p>
               </div>
               <div className="space-y-4">

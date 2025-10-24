@@ -3,6 +3,7 @@
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ScrollReveal } from "./scroll-reveal"
+import { BackgroundBeams } from "@/components/ui/background-beams"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
@@ -26,7 +27,7 @@ const projectsData = {
       images: [
         "/Project-Screenshots/Zapier/Automated-Lead-Qualification-&-Outreach-Workflow/1.png",
         "/Project-Screenshots/Zapier/Automated-Lead-Qualification-&-Outreach-Workflow/2.png",
-        "/Project-Screenshots/Zapier/Automated-Lead-Qualification-&-Outreach-Workflow/3.png"
+        "/Project-Screenshots/Zapier/Automated-Lead-Qualification-&-Outreach-Workflow/3.png",
       ],
     },
     {
@@ -45,7 +46,7 @@ const projectsData = {
       images: [
         "/Project-Screenshots/Zapier/Client-Lifecycle-Automation/1.png",
         "/Project-Screenshots/Zapier/Client-Lifecycle-Automation/2.png",
-        "/Project-Screenshots/Zapier/Client-Lifecycle-Automation/3.png"
+        "/Project-Screenshots/Zapier/Client-Lifecycle-Automation/3.png",
       ],
     },
     {
@@ -64,7 +65,7 @@ const projectsData = {
         "/Project-Screenshots/Zapier/Social-Media-Content-Repurposing-Automation/1.png",
         "/Project-Screenshots/Zapier/Social-Media-Content-Repurposing-Automation/2.png",
         "/Project-Screenshots/Zapier/Social-Media-Content-Repurposing-Automation/3.png",
-        "/Project-Screenshots/Zapier/Social-Media-Content-Repurposing-Automation/4.png"
+        "/Project-Screenshots/Zapier/Social-Media-Content-Repurposing-Automation/4.png",
       ],
     },
     {
@@ -87,7 +88,7 @@ const projectsData = {
         "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/4.png",
         "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/5.png",
         "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/6.png",
-        "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/7.png"
+        "/Project-Screenshots/Zapier/AI-Powered-Multi-Channel-Content-Engine/7.png",
       ],
     },
   ],
@@ -105,7 +106,7 @@ const projectsData = {
       tools: ["Make.com", "Xero", "Asana"],
       images: [
         "/Project-Screenshots/Make/Automated-Xero-Asana-Financial-Report-Integration/1.png",
-        "/Project-Screenshots/Make/Automated-Xero-Asana-Financial-Report-Integration/2.png"
+        "/Project-Screenshots/Make/Automated-Xero-Asana-Financial-Report-Integration/2.png",
       ],
     },
     {
@@ -123,7 +124,7 @@ const projectsData = {
         "/Project-Screenshots/Make/Intelligent-Gmail-Attachment-Processing-&-Filing-Automation/1.png",
         "/Project-Screenshots/Make/Intelligent-Gmail-Attachment-Processing-&-Filing-Automation/2.png",
         "/Project-Screenshots/Make/Intelligent-Gmail-Attachment-Processing-&-Filing-Automation/3.png",
-        "/Project-Screenshots/Make/Intelligent-Gmail-Attachment-Processing-&-Filing-Automation/4.png"
+        "/Project-Screenshots/Make/Intelligent-Gmail-Attachment-Processing-&-Filing-Automation/4.png",
       ],
     },
     {
@@ -144,11 +145,32 @@ const projectsData = {
         "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/4.png",
         "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/5.png",
         "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/6.png",
-        "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/7.png"
+        "/Project-Screenshots/Make/E-Commerce-Order-Support-Automation/7.png",
       ],
     },
   ],
   n8n: [
+    {
+      emoji: "🧾",
+      title: "Automated Invoice & Receipt Classification System",
+      tagline: '"Smart document sorting and data logging — fully automated."',
+      overview:
+        "An n8n automation that classifies and processes invoices and receipts from multiple sources, extracts key data fields, and automatically records them into the correct Google Sheets for organized tracking.",
+      problem:
+        "Manually reviewing, classifying, and logging financial documents like invoices and receipts can be time-consuming and prone to errors, especially when documents come from various email or drive sources.",
+      solution:
+        "The workflow is triggered by new emails with attachments or new files in Google Drive. Each document is analyzed using Google Gemini to determine whether it's a receipt or invoice. The extracted file data is processed through the Veryfi API for field-level data capture, then automatically logged into the correct Google Sheet (invoice or receipt). This ensures accurate categorization and structured financial recordkeeping without manual effort.",
+      result:
+        "This automation demonstrates how AI and document processing APIs can eliminate repetitive data entry, improve financial accuracy, and ensure every record is stored in the right place for easy access and review.",
+      tools: ["n8n", "Gmail Trigger", "Google Drive", "Google Gemini", "Veryfi API", "Google Sheets"],
+      images: [
+        "/Project-Screenshots/n8n/Automated-Invoice-&-Receipt-Classification-System/1.png",
+        "/Project-Screenshots/n8n/Automated-Invoice-&-Receipt-Classification-System/2.png",
+        "/Project-Screenshots/n8n/Automated-Invoice-&-Receipt-Classification-System/3.png",
+        "/Project-Screenshots/n8n/Automated-Invoice-&-Receipt-Classification-System/4.png",
+        "/Project-Screenshots/n8n/Automated-Invoice-&-Receipt-Classification-System/5.png",
+      ],
+    },
     {
       emoji: "💬",
       title: "AI Agent for Facebook Customer Inquiries",
@@ -162,9 +184,7 @@ const projectsData = {
       result:
         "Demonstrates how AI chat automation can maintain consistent communication while reducing response time to near-instant.",
       tools: ["n8n", "Facebook API", "Google Docs", "AI Integration"],
-      images: [
-        "/Project-Screenshots/n8n/AI-Agent-for-Facebook-Customer-Inquiries/1.png"
-      ],
+      images: ["/Project-Screenshots/n8n/AI-Agent-for-Facebook-Customer-Inquiries/1.png"],
     },
     {
       emoji: "💼",
@@ -205,26 +225,37 @@ const projectsData = {
       tools: ["n8n", "Airtable", "Google Gemini", "Kie.ai API", "Facebook", "Twitter (X)", "Reddit", "Gmail"],
       images: [
         "/Project-Screenshots/n8n/Multi-Platform-Content-Generator-and-Scheduler/1.png",
-        "/Project-Screenshots/n8n/Multi-Platform-Content-Generator-and-Scheduler/2.png"
+        "/Project-Screenshots/n8n/Multi-Platform-Content-Generator-and-Scheduler/2.png",
       ],
     },
-        {
+    {
       emoji: "🌤️",
       title: "Automated Daily Weather Forecast for Facebook",
       tagline: '"Automated daily weather updates with an inspiring touch."',
       overview:
         "A fully automated n8n workflow that generates and posts a daily weather forecast with an inspirational quote on Facebook at 8:00 AM.",
-      problem: "Manually designing and posting daily weather updates and quotes takes time and limits consistency for social media managers.",
+      problem:
+        "Manually designing and posting daily weather updates and quotes takes time and limits consistency for social media managers.",
       solution:
         "Triggered by a daily schedule, the automation uses an AI Agent to generate a unique quote (checked against an n8n Data Table for duplicates), retrieves real-time weather via OpenWeatherMap, sources a matching image using Google Custom Search, and selects icons from Google Drive. The post image is then dynamically generated through Templated.io and published automatically to Facebook via the Graph API.",
       result:
         "Demonstrates how AI and automation can deliver engaging, data-driven daily content while reducing manual workload and maintaining consistent social media activity.",
-      tools: ["n8n", "AI Agent", "n8n Data Table", "OpenWeatherMap", "Google Custom Search", "Google Drive", "Templated.io", "Facebook Graph", "API Integration"],
+      tools: [
+        "n8n",
+        "AI Agent",
+        "n8n Data Table",
+        "OpenWeatherMap",
+        "Google Custom Search",
+        "Google Drive",
+        "Templated.io",
+        "Facebook Graph",
+        "API Integration",
+      ],
       images: [
         "/Project-Screenshots/n8n/Automated-Daily-Weather-Forecast-for-Facebook/1.png",
         "/Project-Screenshots/n8n/Automated-Daily-Weather-Forecast-for-Facebook/2.png",
         "/Project-Screenshots/n8n/Automated-Daily-Weather-Forecast-for-Facebook/3.png",
-        "/Project-Screenshots/n8n/Automated-Daily-Weather-Forecast-for-Facebook/4.png"
+        "/Project-Screenshots/n8n/Automated-Daily-Weather-Forecast-for-Facebook/4.png",
       ],
     },
   ],
@@ -258,8 +289,9 @@ export function Projects() {
   }, [])
 
   return (
-    <section id="projects" className="py-16 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-16 bg-background relative overflow-hidden">
+      <BackgroundBeams />
+      <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-balance mb-4">Projects</h2>
