@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Star, Quote } from "lucide-react"
 import { ScrollReveal } from "./scroll-reveal"
-import { BackgroundBeams } from "@/components/ui/background-beams"
 
 const testimonials = [
   {
@@ -32,9 +31,8 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-16 bg-background relative overflow-hidden">
-      <BackgroundBeams />
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="testimonials" className="py-16 bg-muted">
+      <div className="container mx-auto px-4">
         <ScrollReveal>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-balance mb-4">Client Testimonials</h2>

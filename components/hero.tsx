@@ -4,12 +4,10 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react"
 import { ScrollReveal } from "./scroll-reveal"
 import Image from "next/image"
-import { BackgroundBeams } from "@/components/ui/background-beams"
 
 export function Hero() {
   return (
-    <section className="pt-24 pb-16 bg-background relative overflow-hidden">
-      <BackgroundBeams />
+    <section className="pt-24 pb-16 bg-muted relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="flex-1 text-center lg:text-left">

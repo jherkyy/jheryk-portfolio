@@ -1,13 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calendar, MapPin, GraduationCap } from "lucide-react"
 import { ScrollReveal } from "./scroll-reveal"
-import { BackgroundBeams } from "@/components/ui/background-beams"
 
 export function Education() {
   return (
-    <section id="education" className="py-16 bg-background relative overflow-hidden">
-      <BackgroundBeams />
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="education" className="py-16 bg-background">
+      <div className="container mx-auto px-4">
         <ScrollReveal>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-balance mb-4">Education</h2>

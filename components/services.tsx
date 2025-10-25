@@ -1,7 +1,6 @@
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Zap, Database, Code, Users } from "lucide-react"
 import { ScrollReveal } from "./scroll-reveal"
-import { BackgroundBeams } from "@/components/ui/background-beams"
 
 const services = [
   {
@@ -32,9 +31,8 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-16 bg-background relative overflow-hidden">
-      <BackgroundBeams />
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="services" className="py-16 bg-background">
+      <div className="container mx-auto px-4">
         <ScrollReveal>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-balance mb-4">Services</h2>
